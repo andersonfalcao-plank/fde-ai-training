@@ -10,6 +10,13 @@ import "server-only";
 const NODE_ENVS = ["development", "production", "test"] as const;
 type NodeEnv = (typeof NODE_ENVS)[number];
 
+const VERCEL_ENVS = ["development", "preview", "production"] as const;
+type VercelEnv = (typeof VERCEL_ENVS)[number];
+
+function optional(name: string): string | undefined {
+  return process.env[name] || undefined;
+}
+
 function oneOf<T extends string>(
   name: string,
   allowed: readonly T[],
@@ -26,4 +33,7 @@ function oneOf<T extends string>(
 
 export const env = {
   NODE_ENV: oneOf<NodeEnv>("NODE_ENV", NODE_ENVS, "development"),
+  // Set by Vercel on deployments; unset on your machine.
+  VERCEL_ENV: oneOf<VercelEnv>("VERCEL_ENV", VERCEL_ENVS, "development"),
+  VERCEL_GIT_COMMIT_SHA: optional("VERCEL_GIT_COMMIT_SHA"),
 } as const;
