@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -12,13 +13,13 @@ export default function Home() {
         that need you.
       </p>
       <div className="flex flex-wrap gap-3">
-        <Link href="/settings" className={buttonVariants({ size: "lg" })}>
+        <Link href="/settings" className={cn(buttonVariants({ size: "lg" }))}>
           Settings
         </Link>
         {/* An API route, not a page: a plain anchor skips client navigation. */}
         <a
           href="/api/health"
-          className={buttonVariants({ variant: "outline", size: "lg" })}
+          className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
         >
           Health check
         </a>
