@@ -14,18 +14,21 @@ A Next.js 16 app (App Router, React 19, TypeScript) styled with Tailwind CSS v4 
 
 ## Commands
 
-| Command             | What it does                                         |
-| ------------------- | ---------------------------------------------------- |
-| `pnpm dev`          | Start the dev server                                 |
-| `pnpm build`        | Production build                                     |
-| `pnpm start`        | Serve the production build                           |
-| `pnpm lint`         | ESLint                                               |
-| `pnpm format`       | Format all files with Prettier                       |
-| `pnpm format:check` | Fail if any file is not Prettier-formatted           |
-| `pnpm typecheck`    | Generate Next types, then `tsc --noEmit`             |
-| `pnpm check`        | lint + format:check + typecheck + build (CI runs it) |
+| Command             | What it does                                   |
+| ------------------- | ---------------------------------------------- |
+| `pnpm dev`          | Start the dev server                           |
+| `pnpm build`        | Production build                               |
+| `pnpm start`        | Serve the production build                     |
+| `pnpm lint`         | ESLint                                         |
+| `pnpm format`       | Format all files with Prettier                 |
+| `pnpm format:check` | Fail if any file is not Prettier-formatted     |
+| `pnpm typecheck`    | Generate Next types, then `tsc --noEmit`       |
+| `pnpm test`         | Run Vitest once (`pnpm test:watch` to watch)   |
+| `pnpm check`        | lint + format:check + typecheck + test + build |
 
-Run `pnpm check` before every commit; CI runs the same script on pull requests and pushes to `main`.
+Run `pnpm check` before every commit. CI runs the same steps as separate Lint, Typecheck, Test and Build checks on pull requests to `main` and on pushes to `main`; Lint and Test must pass before a PR can merge.
+
+Tests live next to the code they cover as `*.test.ts(x)` and use Vitest with React Testing Library. Run one file with `pnpm test src/components/navbar.test.tsx`, or one test with `pnpm test -t "links Home"`.
 
 Add shadcn components with `pnpm dlx shadcn@latest add <name>`, then `pnpm format`.
 
