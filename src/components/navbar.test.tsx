@@ -15,6 +15,7 @@ describe("Navbar", () => {
   it.each([
     ["Home", "/"],
     ["Products", "/products"],
+    ["Contact", "/contact"],
     ["Settings", "/settings"],
   ])("links %s to %s", (name, href) => {
     render(<Navbar />);
