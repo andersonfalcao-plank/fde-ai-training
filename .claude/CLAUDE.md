@@ -6,8 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-- `pnpm check` runs everything CI runs: lint, format:check, typecheck (`next typegen && tsc --noEmit`), build. Run it before every commit.
-- There is no test runner yet; `pnpm check` is the only automated verification.
+- `pnpm check` runs everything CI runs: lint, format:check, typecheck (`next typegen && tsc --noEmit`), test (Vitest), build. Run it before every commit.
+- `main` is protected: the Lint and Test checks must pass before a PR can merge.
 
 ## Git and PRs
 
